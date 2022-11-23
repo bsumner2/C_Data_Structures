@@ -7,38 +7,38 @@ decided to code the rest of the data structures I learned in Algorithm-
 ic design II at University of South Carolina. This is what this Github
 Repo has become now. 
 
-# REQUIREMENTS
+## REQUIREMENTS
 
 If you plan on using the Makefiles provided in each subfolder, then
 there are 2 dependencies. Otherwise you can choose a compiler fully at 
 your own discretion if you plan on using a compiler and memcheck
 resource leak checking program of your choice.
-## GCC: Gnu Compiler Collection. Used to compile C code.
+#### GCC: Gnu Compiler Collection. Used to compile C code.
 
 My personal compiler of choice. (Until I'm made aware of a
 benefit to learning how to use CLANG versus sticking to the compiler
 I learned C with). This is the compiler that the Makefile I wrote uses
 to compile the C code.
 
-## Valgrind: A CLI Program That Utilizes Memcheck For Memory Analysis
+#### Valgrind: A CLI Program That Utilizes Memcheck For Memory Analysis
 
 The resource_leak_check target in my Makefile uses valgrind in order to
 check for unaccounted-for memory leaks in the code.
 
-# The Data Structure Subfolders
+## The Data Structure Subfolders
 
-## Linked List
+### Linked List
 
 Still missing some key functions associated with Linked Lists. Has the
 basics, though. Can add, remove, search for occurrence, and print.
 
-## Binary Tree
+### Binary Tree
 
 This one has all base functionalities, but I would definitely like to,
 and <i>will</i> improve it further. One of my plans within the next
 few updates is add balancing via the AVL and Red-Black approaches.
 
-## Running Demos
+### Running Demos
 
 A Makefile is included in each of the data structures' subfolders.
 The default Makefile target will compile and run the demo source file, 
