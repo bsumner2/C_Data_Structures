@@ -6,7 +6,10 @@ LCHECK=valgrind
 
 
 
-default: clean compile run
+default: init clean compile run
+
+init:
+	mkdir -p bin
 
 clean:
 	../clean.sh
