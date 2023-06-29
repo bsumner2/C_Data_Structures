@@ -1,25 +1,2 @@
-CC=gcc
-EXE=./bin/a.out
-MAIN=./src/main.c
-LCHECK=valgrind
-.SILENT:
-
-
-
-default: init clean compile run
-
-init:
-	mkdir -p bin
-
-clean:
-	../clean.sh
-
-compile:
-	$(CC) -o $(EXE) $(MAIN)
-
-run:
-	$(EXE)
-
-resource_leak_check: clean compile
-	$(LCHECK) --leak-check=full $(EXE)
-
+default:
+	gcc -g -std=c89 -Wall -Wextra -pedantic -I./include ./src/BinaryTree.c ./src/main.c -o ./bin/test.elf

@@ -1,49 +1,35 @@
-/* Written by: Burton O Sumner */
-#ifndef BINARY_TREE
-#define BINARY_TREE
+#ifndef _BINARY_TREE_H_
+#define _BINARY_TREE_H_
+#include <stddef.h>
+#include <stdint.h>
 
-typedef enum
-{
-    PRE, IN, POST
-} PrintOrder;
+struct _BTNode {
+  void* data;
+  struct _BTNode *l, *r;
+  int height;
+};
 
-typedef struct node
-{
-    int key;
-    struct node *left, *right;
-} Node;
-
-typedef struct tree
-{
-    Node* root;
+typedef struct _BinaryTree {
+ struct _BTNode *root;
 } BinaryTree;
 
 
-void addToTree(int key, BinaryTree* tree);
-Node* recursiveTreeAdd(int key, Node* node);
-
-void removeFromTree(int key, BinaryTree* tree);
-Node* recursiveTreeRemove(int key, Node* node);
-Node* findMinimumInSubTree(Node* node);
-
-void invertTree(BinaryTree* tree);
-Node* recursiveTreeInversion(Node* node);
 
 
-void removeAllGreaterThan(int key, BinaryTree* tree);
-Node* recursivelyRemoveAllGreaterThan(int key, Node* node);
 
-void deallocateTree(BinaryTree* tree);
-Node* deallocationTraversal(Node* node);
+typedef int ComparisonCB(void*, void*);
 
-unsigned char searchInTree(int key, BinaryTree tree);
-Node* recursiveTreeSearch(int key, Node *node);
+BinaryTree *BinaryTreeCreate(void);
+void BinaryTreeAdd(BinaryTree*, void*, size_t, ComparisonCB);
+void BinaryTreeRemove(BinaryTree*, void*, ComparisonCB);
+uint8_t BinaryTreeContains(BinaryTree*, void*, ComparisonCB);
+void *BinaryTreeFetch(BinaryTree*, void*, ComparisonCB);
+void *BinaryTreeFree(BinaryTree*);
+void BinaryTreeInOrderPrint(BinaryTree*, void (print_callback(void*)));
 
 
-void printTree(BinaryTree tree, PrintOrder order);
-void printInOrder(Node* node);
-void printPreOrder(Node* node);
-void printPostOrder(Node* node);
 
-Node* newNode(int key);
-#endif
+
+
+
+#endif  /* _BINARY_TREE_H_ */

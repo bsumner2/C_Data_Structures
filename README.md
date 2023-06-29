@@ -7,43 +7,26 @@ decided to code the rest of the data structures I learned in Algorithm-
 ic design II at University of South Carolina. This is what this Github
 Repo has become now. 
 
-## REQUIREMENTS
+# Jun 29th 2023 Update
 
-If you plan on using the Makefiles provided in each subfolder, then
-there are 2 dependencies. Otherwise you can choose a compiler fully at 
-your own discretion if you plan on using a compiler and memcheck
-resource leak checking program of your choice.
-#### GCC: Gnu Compiler Collection. Used to compile C code.
+This repo has now become a place for my actually (semi-)serious data structures.
+Data structures that can take generics and that I would be willing to use in an
+actual project if need be.
 
-My personal compiler of choice. (Until I'm made aware of a
-benefit to learning how to use CLANG versus sticking to the compiler
-I learned C with). This is the compiler that the Makefile I wrote uses
-to compile the C code.
+## Data Structures So Far:
 
-#### Valgrind: A CLI Program That Utilizes Memcheck For Memory Analysis
+Hashmap that takes cstring keys and generics via void *value param and size_t
+size param for malloc to know how much space to reserve for it.
 
-The resource_leak_check target in my Makefile uses valgrind in order to
-check for unaccounted-for memory leaks in the code.
+# Memory Safety
 
-## The Data Structure Subfolders
-
-### Linked List
-
-Still missing some key functions associated with Linked Lists. Has the
-basics, though. Can add, remove, search for occurrence, and print.
-
-### Binary Tree
-
-This one has all base functionalities, but I would definitely like to,
-and <i>will</i> improve it further. One of my plans within the next
-few updates is add balancing via the AVL and Red-Black approaches.
-
-### Running Demos
-
-A Makefile is included in each of the data structures' subfolders.
-The default Makefile target will compile and run the demo source file, 
-<data structure folder>/src/main.c. The only other targets of note are
-clean if you wanna clean the binaries created after compilation, and
-resource_leak_check, which runs the program valgrind for checking for 
-checking that all memory blocks reserved by malloc have been cleared
-from the heap. 
+Deallocation of data in nodes is simply free(node->data), so make sure any composition
+(i.e.: dynamic metadata within the data youre adding to these data structures)
+is dealt with appropriately. I suggest any pointers within structs you wish to add to
+any of these data structures point to static memory, that way when free(node->data) is called,
+we don't lose the only tether to the dynamic data we would otherwise have had.
+If you think it would be wise of me to add a deallocator function callback as a parameter
+for any data-removal or whole-structure-freeing functions, then please feel free to PM me,
+and I can take it into consideration. For the time being, I left it out because I feel like
+the amount of parameters it has at its current state is already a lot and, at least in my head,
+seems like a slipperly slope toward overpolluting the call stack.
