@@ -13,12 +13,22 @@ This repo has now become a place for my actually (semi-)serious data structures.
 Data structures that can take generics and that I would be willing to use in an
 actual project if need be.
 
-## Data Structures So Far:
+## Data Structures So Far
 
-Hashmap that takes cstring keys and generics via void *value param and size_t
-size param for malloc to know how much space to reserve for it.
+### Hashmap
 
-# Memory Safety
+Basic 7919-index table open hashmap that takes cstring keys and generic values 
+via void* value param and size_t size param for malloc to know how much space to 
+reserve for the data, and copies the data in void* value via memmove.
+
+### AVL Tree
+
+Basic AVL-style restructuring binary search tree. Handles allocation of generics
+in the same way that the hashmap does. Only difference here being that it also
+takes callback function parameters for comparing the data parameterized with the
+data already in the tree. 
+
+## Memory Safety
 
 Deallocation of data in nodes is simply free(node->data), so make sure any composition
 (i.e.: dynamic metadata within the data youre adding to these data structures)

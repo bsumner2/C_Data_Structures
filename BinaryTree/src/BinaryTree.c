@@ -267,7 +267,7 @@ void *BinaryTreeFree(BinaryTree *tree) {
   return NULL;
 }
 
-void BTNodeInternalInOrderTraverse(BTNode *root, void pcb(void*)) {
+static void BTNodeInternalInOrderTraverse(BTNode *root, void pcb(void*)) {
   if (!root)
     return;
   BTNodeInternalInOrderTraverse(root->l, pcb);
