@@ -313,7 +313,7 @@ bool BinaryTree_Insert(BinaryTree_t *tree, const void *data) {
       if (cmp(data, cur->r->data) > 0) {
         cur = BinaryTreeNode_RR_Rotate(cur);
       } else {
-        BinaryTreeNode_RL_Rotate(cur);
+        cur = BinaryTreeNode_RL_Rotate(cur);
       }
     } else {
       BinaryTreeNode_Recalc_Height(cur);
